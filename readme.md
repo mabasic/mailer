@@ -60,4 +60,5 @@ class ContactController extends \BaseController {
 		 return Response::json("Email was sent sucessfully", 200);
 
 	}
+}
 ```

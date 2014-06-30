@@ -21,7 +21,7 @@ class ContactMailer extends Mailer {
     public function send($data)
     {
         $view = "emails.contact";
-        $subject = "Subject;
+        $subject = "Subject";
         $recipient = [
             "address" => 'test@test.com',
             "name" => 'Test'

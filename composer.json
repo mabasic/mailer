@@ -1,0 +1,25 @@
+{
+    "name": "mabasic/mailer",
+    "description": "Laravel package for more efficient email sending inspired by Laracasts.",
+    "keywords": ["mail", "laravel", "email", "mailer"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mario Basic",
+            "email": "mario.basic@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Mabasic\\Mailer\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

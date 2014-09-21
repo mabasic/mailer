@@ -12,7 +12,7 @@ Laravel package for more efficient email sending inspired by a [Laracasts lesson
 Create a class for specific case like so:
 
 ```php
-<?php namespace Test\Mailers;
+<?php namespace Acme\Mailers;
 
 use Mabasic\Mailer\Mailer;
 
@@ -22,12 +22,11 @@ class ContactMailer extends Mailer {
     {
         $view = "emails.contact";
         $subject = "Subject";
-        $recipient = [
-            "address" => 'test@test.com',
-            "name" => 'Test'
+        $user = [
+            "email" => 'test@test.com'
         ];
 
-        return $this->sendTo($recipient, $subject, $view, $data);
+        return $this->sendTo($user, $subject, $view, $data);
     }
 
 }
@@ -40,7 +39,7 @@ Then in your controller you can inject it and use it like so:
 ```php
 <?php
 
-use Test\Mailers\ContactMailer;
+use Acme\Mailers\ContactMailer;
 
 class ContactController extends \BaseController {
 
@@ -50,7 +49,7 @@ class ContactController extends \BaseController {
 	{
 		 $this->contactMailer = $contactMailer;
 	}
-	
+
 	public function store()
 	{
 		 $input = Input::all();

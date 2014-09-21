@@ -1,10 +1,13 @@
 # Mailer
 
-Laravel package for more efficient email sending inspired by a [Laracasts lesson](https://laracasts.com/lessons/mailers).
+Laravel package for more efficient email sending inspired by Laracasts lessons:
+
+- [Mailers](https://laracasts.com/lessons/mailers)
+- [Handlers and Mailers](https://laracasts.com/series/build-a-laravel-app-from-scratch/episodes/27)
 
 ## Installation
 
-1. Add `"mabasic/mailer": "1.*"` to your composer.json.
+1. Add `"mabasic/mailer": "~1.0"` to your composer.json.
 2. Run `composer update`
 
 ## Usage

@@ -1,24 +1,43 @@
 <?php namespace Mabasic\Mailer;
 
-use Mail;
+use Illuminate\Mail\Mailer as Mail;
 
+/**
+ * Class Mailer
+ * @package Mabasic\Mailer
+ */
 abstract class Mailer {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Send email using queue (if possible)
-    |--------------------------------------------------------------------------
-    |
-    | Recipient array (containing address and name) and view
-    | parameters are required, data is optional.
-    |
-    */
-    public function sendTo($recipient, $subject, $view, $data = [])
+    /**
+     * @var Mail
+     */
+    protected $mail;
+
+    /**
+     * @param Mail $mailer
+     */
+    public function __construct(Mail $mailer)
     {
-        Mail::queue($view, $data, function($message) use($recipient, $subject)
+
+        $this->mail = $mailer;
+    }
+
+    /**
+     * Send email using queue (if possible)
+     *
+     * Recipient array (containing address and name) and view
+     * parameters are required, data is optional.
+     *
+     * @param $user
+     * @param $subject
+     * @param $view
+     * @param array $data
+     */
+    public function sendTo($user, $subject, $view, $data = [])
+    {
+        $this->mail->queue($view, $data, function($message) use($user, $subject)
         {
-            $message->to($recipient['address'], $recipient['name']);
-            $message->subject($subject);
+            $message->to($user->email)->subject($subject);
         });
     }
 

@@ -14,12 +14,12 @@ abstract class Mailer {
     protected $mail;
 
     /**
-     * @param Mail $mailer
+     * @param Mail $mail
      */
-    public function __construct(Mail $mailer)
+    public function __construct(Mail $mail)
     {
 
-        $this->mail = $mailer;
+        $this->mail = $mail;
     }
 
     /**

@@ -1,6 +1,0 @@
-suites:
-    bard_suite:
-        namespace: Mabasic\Mailer
-        psr4_prefix: Mabasic\Mailer
-        src_path: src\Mabasic\Mailer
-        spec_prefix: spec\Mabasic\Mailer

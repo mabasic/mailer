@@ -1,14 +1,36 @@
 # Mailer
 
-Laravel package for more efficient email sending inspired by Laracasts lessons:
+Laravel 4 package for more efficient email sending inspired by Laracasts lessons:
 
 - [Mailers](https://laracasts.com/lessons/mailers)
 - [Handlers and Mailers](https://laracasts.com/series/build-a-laravel-app-from-scratch/episodes/27)
 
+**What does it exactly do?**
+
+It enables you to write this:
+
+```php
+$this->contactMailer->send($data);
+```
+
+from your controller, instead of doing this:
+
+```php
+Mail::queue($view, $data, function($message) use($email, $subject)
+{
+    $message->to($email)->subject($subject);
+});
+```
+
+every time you want to send an email. 
+
 ## Installation
 
-1. Add `"mabasic/mailer": "~1.0"` to your composer.json.
-2. Run `composer update`
+From your project root type:
+
+```
+composer require mabasic/mailer
+```
 
 ## Usage
 
@@ -23,19 +45,15 @@ class ContactMailer extends Mailer {
 
     public function send($data)
     {
-        $view = "emails.contact";
-        $subject = "Subject";
-        $user = [
-            "email" => 'test@test.com'
-        ];
+        $view = 'emails.contact';
+        $subject = 'Test';
+        $email = 'test@test.com';
 
-        return $this->sendTo($user, $subject, $view, $data);
+        $this->sendTo($email, $subject, $view, $data);
     }
 
 }
 ```
-
-It needs to use `Mabasic\Mailer\Mailer;` and extend `Mailer`.
 
 Then in your controller you can inject it and use it like so:
 
@@ -44,23 +62,28 @@ Then in your controller you can inject it and use it like so:
 
 use Acme\Mailers\ContactMailer;
 
-class ContactController extends \BaseController {
+class MailerController extends \BaseController {
 
-	protected $contactMailer;
+    protected $contactMailer;
 
-	public function __construct(ContactMailer $contactMailer)
-	{
-		 $this->contactMailer = $contactMailer;
-	}
+    function __construct(ContactMailer $contactMailer)
+    {
+        $this->contactMailer = $contactMailer;
+    }
 
-	public function store()
-	{
-		 $input = Input::all();
+    public function sendMail()
+    {
+        // Get some data for the email, like user name, message, etc ...
 
-		 $this->contactMailer->send($input);
+        $data = [
+            'name' => 'John Doe',
+            'comment' => 'Hello, nice to meet you.'
+        ];
 
-		 return Response::json("Email was sent sucessfully", 200);
+        $this->contactMailer->send($data);
 
-	}
+        return 'ok';
+    }
+
 }
 ```

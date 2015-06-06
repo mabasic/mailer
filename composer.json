@@ -1,25 +1,28 @@
 {
-    "name": "mabasic/mailer",
-    "description": "Laravel package for more efficient email sending inspired by Laracasts.",
-    "keywords": ["mail", "laravel", "email", "mailer"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Mario Basic",
-            "email": "mario.basic@outlook.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "~4.0|~5.0"
-    },
-    "require-dev": {
-        "phpspec/phpspec": "~2.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Mabasic\\Mailer\\": "src"
-        }
-    },
-    "minimum-stability": "stable"
+  "name": "mabasic/mailer",
+  "description": "Laravel 4 package for more efficient email sending inspired by Laracasts.",
+  "keywords": [
+    "mail",
+    "laravel",
+    "email",
+    "mailer"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mario Basic",
+      "email": "mario.basic@outlook.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "~4.0",
+    "illuminate/mail": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mabasic\\Mailer\\": "src"
+    }
+  },
+  "minimum-stability": "stable"
 }

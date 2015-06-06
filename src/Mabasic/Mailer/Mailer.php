@@ -1,18 +1,12 @@
 <?php namespace Mabasic\Mailer;
 
-use Illuminate\Mail\Mailer as Mail;
+use Illuminate\Mail\Mailer as IlluminateMailer;
 
-abstract class Mailer {
+class Mailer {
 
-    /**
-     * @var Mail
-     */
     protected $mail;
 
-    /**
-     * @param Mail $mail
-     */
-    public function __construct(Mail $mail)
+    public function __construct(IlluminateMailer $mail)
     {
 
         $this->mail = $mail;

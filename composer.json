@@ -13,6 +13,9 @@
         "php": ">=5.4.0",
         "illuminate/support": "~4.0|~5.0"
     },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1"
+    },
     "autoload": {
         "psr-4": {
             "Mabasic\\Mailer\\": "src"

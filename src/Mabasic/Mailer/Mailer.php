@@ -24,7 +24,7 @@ abstract class Mailer {
      * Recipient array (containing address and name) and view
      * parameters are required, data is optional.
      *
-     * @param $user
+     * @param $email
      * @param $subject
      * @param $view
      * @param array $data

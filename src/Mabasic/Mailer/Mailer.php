@@ -2,10 +2,6 @@
 
 use Illuminate\Mail\Mailer as Mail;
 
-/**
- * Class Mailer
- * @package Mabasic\Mailer
- */
 abstract class Mailer {
 
     /**
@@ -33,11 +29,11 @@ abstract class Mailer {
      * @param $view
      * @param array $data
      */
-    public function sendTo($user, $subject, $view, $data = [])
+    public function sendTo($email, $subject, $view, array $data = [])
     {
-        $this->mail->queue($view, $data, function($message) use($user, $subject)
+        $this->mail->queue($view, $data, function($message) use($email, $subject)
         {
-            $message->to($user->email)->subject($subject);
+            $message->to($email)->subject($subject);
         });
     }
 
